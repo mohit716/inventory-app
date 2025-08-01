@@ -23,6 +23,7 @@ API_KEY=your-api-key
 ```bash
 cd inventory-backend
 # activate your venv if not already
+.\venv\Scripts\Activate.ps1
 uvicorn main:app --reload
 ```
 Swagger UI: http://127.0.0.1:8000/docs — click **Authorize** and enter your API key (header name `X-Api-Key`).
@@ -30,7 +31,7 @@ Swagger UI: http://127.0.0.1:8000/docs — click **Authorize** and enter your AP
 ### 3. Run frontend
 ```bash
 cd inventory-frontend
-npm install    # if you haven't already
+nvm use 20.19.0
 npm run dev
 ```
 Open: http://localhost:5173
@@ -74,8 +75,7 @@ Body example:
 ## Cross-browser
 Tested on:
 - Chrome (Chromium)
-- Edge (Chromium)
-- *(optional)* Firefox
+- Firefox
 
 Screenshot evidence: `docs/screens/`  
 ![Chrome Screenshot](docs/screens/ui-chrome.png)  
@@ -117,4 +117,4 @@ README.md
 
 ## Contact / Notes
 - GitHub: https://github.com/mohit716/inventory-app  
-- Use this as a reference implementation; can be extended to product/catalog use cases.
+
