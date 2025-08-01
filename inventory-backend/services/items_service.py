@@ -6,13 +6,8 @@ class ItemService:
     def __init__(self):
         self.col = get_items_collection()
 
-    def list_items(self) -> List[Item]:
-        # keep _id out so it matches the Item response_model
-        return list(self.col.find({}, {"_id": 0}))
+    def list_items(self, skip: int = 0, limit: int = 50) -> List[Item]:
+        return list(self.col.find({}, {"_id": 0}).skip(skip).limit(limit))
 
     def create_item(self, item: Item) -> None:
         self.col.insert_one(item.model_dump())
-
-# DI provider
-def get_item_service() -> ItemService:
-    return ItemService()
