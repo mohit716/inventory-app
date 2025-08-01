@@ -1,4 +1,3 @@
-# services/items_service.py
 from typing import List
 from models import Item
 from db import get_items_collection
@@ -8,7 +7,8 @@ class ItemService:
         self.col = get_items_collection()
 
     def list_items(self) -> List[Item]:
-        return list(self.col.find({}, {"_id": 0}))  # keep _id out
+        # keep _id out so it matches the Item response_model
+        return list(self.col.find({}, {"_id": 0}))
 
     def create_item(self, item: Item) -> None:
         self.col.insert_one(item.model_dump())
